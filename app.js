@@ -1,8 +1,9 @@
+//version for github pages
 let min = 1,
   max = 10,
   winningNum = getRandomNum(min, max),
   guessesLeft = 3;
-//UI element
+// UI element
 const game = document.querySelector('#game'),
   minNum = document.querySelector('.min-num'),
   maxNum = document.querySelector('.max-num'),
@@ -22,20 +23,14 @@ game.addEventListener('mousedown', function(e) {
 guessBtn.addEventListener('click', function() {
   let guess = parseInt(guessInput.value);
   if (isNaN(guess) || guess < min || guess > max) {
-    setMessage(`Please enter a number between ${min} and ${max}`, 'red');
+    setMessage(`Please enter a number between ${min} and ${max}`, 'green');
   } else if (guess === winningNum) {
     gameOver(true, `${winningNum} is correct, YOU WIN!`);
-    // guessInput.disabled = true;
-    // guessInput.style.borderColor = 'green';
-    // setMessage(`${winningNum} is correct, YOU WIN!`, 'green');
   } else {
     guessesLeft -= 1;
 
     if (guessesLeft === 0) {
       gameOver(false, `The correct number is ${winningNum}, you lost.`);
-      // guessInput.disabled = true;
-      // guessInput.style.borderColor = 'red';
-      // setMessage(`The correct number is ${winningNum}, you lost.`, 'red');
     } else {
       setMessage(
         `${guess} is not correct, ${guessesLeft} guesses left.`,
